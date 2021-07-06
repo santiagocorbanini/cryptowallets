@@ -1,18 +1,18 @@
 <div class="p-4 mb-4 bg-light rounded-3">
     <div class="container-fluid py-2">
-        <h1 class="display-7 fw-bold">{{user.name}}</h1>
+        <h1 class="display-7 fw-bold"><i class="bi bi-person-circle"></i> {{user.name}}</h1>
         <hr class="my-4">
-        <p class="col-md-12 fs-8">Balance: ${{user.balance}}</p>
-        <p class="col-md-12 fs-8">Created: {{user.fecha | date}}</p>
+        <p class="col-md-12 fs-8"><i class="bi bi-currency-exchange"></i> Balance: ${{user.balance}}</p>
+        <p class="col-md-12 fs-8"><i class="bi bi-calendar-event"></i> Created: {{user.fecha | date}}</p>
         <hr class="my-4">
         <h5 >Wallets:</h5>
 
         <div class="card" *ngFor="let wallet of user.wallets ">
             <div class="card-body">
                 <figcaption class="blockquote-footer">Id: #{{wallet.id}}</figcaption>
-                <p>Cryptocurrency: <small><strong>{{wallet.nameCurrency}}</strong></small>
-                <br>Total: <small><strong>${{wallet.currency}}</strong></small>
-                <br>Created: <small><strong>{{wallet.fecha | date}}</strong></small>
+                <p><i class="bi bi-wallet2"></i> Cryptocurrency: <small><strong>{{wallet.nameCurrency}}</strong></small>
+                <br><i class="bi bi-cash-stack"></i> Total: <small><strong>${{wallet.currency}}</strong></small>
+                <br><i class="bi bi-calendar2-check"></i> Created: <small><strong>{{wallet.fecha | date}}</strong></small>
                 </p>
             </div> 
         </div>

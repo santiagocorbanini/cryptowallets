@@ -7,18 +7,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" [routerLink]="['/users']" >Users</a>
+            <a class="nav-link active" aria-current="page" [routerLink]="['/users']"><i class="bi bi-people-fill"></i> Users</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Options
+                <i class="bi bi-filter-left"></i>Options
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" [routerLink]="['/new-user']" >New User</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/new-user']" ><i class="bi bi-person-plus-fill"></i> New User</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/new-user']" ><i class="bi bi-arrow-left-right"></i> Transfer Money</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" >Admin</a>
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><i class="bi bi-person"></i> Admin</a>
           </li>
         </ul>
         <form class="d-flex">
