@@ -5,19 +5,8 @@
         <p class="col-md-12 fs-8">Balance: ${{user.balance}}</p>
         <p class="col-md-12 fs-8">Created: {{user.fecha | date}}</p>
         <hr class="my-4">
-        <h5 >Wallets:</h5>
 
-        <div class="card" *ngFor="let wallet of user.wallets ">
-            <div class="card-body">
-                <figcaption class="blockquote-footer">Id: #{{wallet.id}}</figcaption>
-                <p>Name: <small><strong>{{wallet.nameCurrency}}</strong></small>
-                <br>Currency: <small><strong>${{wallet.currency}}</strong></small>
-                <br>Created: <small><strong>{{wallet.fecha | date}}</strong></small>
-                </p>
-            </div> 
-        </div>
-
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" attr.data-bs-target="#{{user.name}}">
+        <button type="button" class="btn btn-primary" [routerLink]="['/user/', user.id]" routerLinkActive="router-link-active">
             View Wallets
         </button>
     </div>

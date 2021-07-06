@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-wallet',
@@ -9,14 +10,34 @@ import { ActivatedRoute } from '@angular/router';
 export class WalletComponent implements OnInit {
     
     private idUser;
+    public user;
+    public nameCurrency;
+    public currency;
   
     constructor(
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router,
+        private service: UserService
     ) { }
 
     ngOnInit() {
         this.idUser = this.route.snapshot.paramMap.get('id');
-        console.log(this.idUser); 
+        this.service.find(this.idUser)
+            .subscribe(response => {
+                this.user = response;
+            }, error => {
+                this.router.navigate(['/']);
+            });
     }
 
+    public sendWallet(){
+        const data = {
+            "nameCurrency": this.nameCurrency,
+            "currency": this.currency
+        };
+        this.service.addWallet(this.user.id, data)
+            .subscribe(response => {
+                this.ngOnInit();
+            });
+    }
 }

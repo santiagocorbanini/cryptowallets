@@ -1,0 +1,54 @@
+<div class="p-4 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-2">
+        <h1 class="display-7 fw-bold">{{user.name}}</h1>
+        <hr class="my-4">
+        <p class="col-md-12 fs-8">Balance: ${{user.balance}}</p>
+        <p class="col-md-12 fs-8">Created: {{user.fecha | date}}</p>
+        <hr class="my-4">
+        <h5 >Wallets:</h5>
+
+        <div class="card" *ngFor="let wallet of user.wallets ">
+            <div class="card-body">
+                <figcaption class="blockquote-footer">Id: #{{wallet.id}}</figcaption>
+                <p>Cryptocurrency: <small><strong>{{wallet.nameCurrency}}</strong></small>
+                <br>Total: <small><strong>${{wallet.currency}}</strong></small>
+                <br>Created: <small><strong>{{wallet.fecha | date}}</strong></small>
+                </p>
+            </div> 
+        </div>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal"  data-bs-target="#exampleModal">
+            Add Wallet
+        </button>
+    </div>
+</div> 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Wallet</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                  <label for="nameCurrency" class="form-label">Cryptocurrency</label>
+                  <input [(ngModel)]="nameCurrency" name="nameCurrency" type="text" class="form-control" id="nameCurrency" >
+                  <small id="warning" class="form-text text-muted">Fill in with a name of crypto currency</small>
+                </div>
+                <div class="mb-3">
+                  <label for="currency" class="form-label">Money</label>
+                  <input [(ngModel)]="currency" name="currency" type=number min=0.00 placeholder="0.00" class="form-control" id="currency">
+                  <small id="warning" class="form-text text-muted">Negative values ​​cannot be entered</small>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button (click)="sendWallet()" type="button" class="btn btn-primary">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
