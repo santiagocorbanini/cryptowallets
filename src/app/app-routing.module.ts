@@ -21,6 +21,10 @@ const routes: Routes = [
     {
         path: 'user/:id',
         component: WalletComponent
+    },
+    {
+        path: 'user/search/:id',
+        component: UsersComponent
     }
 ];
 

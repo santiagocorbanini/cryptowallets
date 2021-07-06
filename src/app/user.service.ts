@@ -26,4 +26,8 @@ export class UserService {
     public find(idUser) {
         return this.http.get<any>(this.uri + '/user/' + idUser);
     }
+
+    public search(search){
+        return this.http.get<any>(this.uri + '/user/search/' + search);
+    }
 }
