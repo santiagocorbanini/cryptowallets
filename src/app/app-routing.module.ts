@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewUserComponent } from './new-user/new-user.component';
 import { UsersComponent } from './users/users.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { TransferComponent } from './transfer/transfer.component';
 
 const routes: Routes = [
     {
@@ -17,6 +18,10 @@ const routes: Routes = [
     {
         path: 'new-user',
         component: NewUserComponent
+    },
+    {
+        path: 'transfer',
+        component: TransferComponent
     },
     {
         path: 'user/:id',

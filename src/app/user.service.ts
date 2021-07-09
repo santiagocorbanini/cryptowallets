@@ -15,8 +15,8 @@ export class UserService {
     return this.http.post(this.uri + '/users', user);
   }
 
-  public addWallet(idUser, wallet){
-    return this.http.post(this.uri + '/users/' + idUser + '/addwallet', wallet);
+  public addWallet(wallet){
+    return this.http.post(this.uri + '/user/addwallet', wallet);
   }
 
   public findAll() {
@@ -27,7 +27,15 @@ export class UserService {
         return this.http.get<any>(this.uri + '/user/' + idUser);
     }
 
+    public findWallets(idUser) {
+        return this.http.get<any>(this.uri + '/user/' + idUser + "/wallets");
+    }
+
     public search(search){
         return this.http.get<any>(this.uri + '/user/search/' + search);
+    }
+
+    public transfer(transferMoney){
+        return this.http.post(this.uri + '/transfer', transferMoney);;
     }
 }

@@ -10,6 +10,7 @@ import { UserComponent } from './user/user.component';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { WalletComponent } from './wallet/wallet.component';
+import { TransferComponent } from './transfer/transfer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { WalletComponent } from './wallet/wallet.component';
     NewUserComponent,
     UsersComponent,
     UserComponent,
-    WalletComponent
+    WalletComponent,
+    TransferComponent
   ],
   imports: [
     BrowserModule,
