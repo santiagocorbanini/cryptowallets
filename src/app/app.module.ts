@@ -11,6 +11,8 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { WalletComponent } from './wallet/wallet.component';
 import { TransferComponent } from './transfer/transfer.component';
+import { ReactiveFormsModule } from '@angular/forms'
+
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { TransferComponent } from './transfer/transfer.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

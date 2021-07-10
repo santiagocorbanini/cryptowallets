@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { FormBuilder, Validators } from "@angular/forms";
+
 
 @Component({
   selector: 'app-transfer',
@@ -12,19 +14,41 @@ export class TransferComponent implements OnInit {
     public sender;
     public receiver;
     public money;
+    public wallets;
+    public senderId;
+    public receiverId;
 
     constructor(
         private service: UserService,
-        private router: Router
+        private router: Router,
+        public fb: FormBuilder
     ) { }
 
-  ngOnInit(): void {
+ /*########### Form ###########*/
+ registrationForm = this.fb.group({
+    senderId: ['', [Validators.required]],
+    receiverId: ['', [Validators.required]]
+  })
+
+
+  // Choose city using select dropdown
+  changeCity(e) {
+    this.senderId = JSON.stringify(this.registrationForm.value.senderId);
+    this.receiverId = JSON.stringify(this.registrationForm.value.receiverId);
+  }
+
+    ngOnInit(): void {
+
+        this.service.showWallets()
+            .subscribe(response => {
+                this.wallets  = response;
+        });
   }
 
   public sendTransfer() {
     const transferMoney = {
-      'sender': this.sender,
-      'receiver': this.receiver,
+      'sender': this.senderId,
+      'receiver': this.receiverId,
       'money': this.money
     };
 

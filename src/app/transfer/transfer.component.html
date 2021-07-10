@@ -1,18 +1,39 @@
 <h1>Transfer</h1>
 <form>
     <div class="mb-3">
+
+        <!--
         <label for="sender" class="form-label">Sender</label>
         <input [(ngModel)]="sender" name="sender" type="text" class="form-control" id="sender" >
         <div id="senderHelp" class="form-text">Fill with id wallet of Sender</div>
+        -->
+
+        <form [formGroup]="registrationForm">
+            <label for="sender" class="form-label">Sender</label>
+            <select  class="form-select" formControlName="senderId" (change)="changeCity($event)" >
+                <option value="">Choose your city</option>
+                <option *ngFor="let walletSender of wallets" value="{{walletSender.id}}">Name: {{walletSender.nameCurrency}} - ${{walletSender.currency}} - Id: {{walletSender.id}}</option>
+            </select>
+            <div id="senderHelp" class="form-text">Fill with id wallet of Sender</div>
+
+            <label for="receiver" class="form-label">Receiver</label>
+            <select  class="form-select" formControlName="receiverId" (change)="changeCity($event)" >
+                <option value="">Choose your receiver</option>
+                <option *ngFor="let walletReceiver of wallets" value="{{walletReceiver.id}}">Name: {{walletReceiver.nameCurrency}} - ${{walletReceiver.currency}} - Id: {{walletReceiver.id}}</option>
+            </select>
+            <div id="receiverHelp" class="form-text">Fill with id wallet of Receiver</div>
+        </form>
+
     </div>
+    <!--
     <div class="mb-3">
         <label for="receiver" class="form-label">Receiver</label>
         <input [(ngModel)]="receiver" name="receiver" type="text" class="form-control" id="receiver" >
         <div id="receiverHelp" class="form-text">Fill with id wallet of Receiver</div>
     </div>
-    <div class="mb-3">
-        <label for="money" class="form-label">Money</label>
+    -->
+
+    <label for="money" class="form-label">Money</label>
         <input [(ngModel)]="money" name="money" type=number min=0.00 placeholder="0.00" class="form-control" id="money">
-    </div>
     <button (click)="sendTransfer()" type="button" class="btn btn-primary">Submit</button>
 </form>

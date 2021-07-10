@@ -38,4 +38,8 @@ export class UserService {
     public transfer(transferMoney){
         return this.http.post(this.uri + '/transfer', transferMoney);;
     }
+
+    public showWallets() {
+        return this.http.get<any>(this.uri + '/wallets/');
+    }
 }
