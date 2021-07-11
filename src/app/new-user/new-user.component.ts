@@ -26,7 +26,6 @@ export class NewUserComponent implements OnInit {
 
     this.userService.save(user)
         .subscribe(response => {
-            console.log(response);
             this.router.navigate(['/']);
         });
   }

@@ -21,13 +21,13 @@ export class UsersComponent implements OnInit {
             this.service
                 .search(this.route.snapshot.paramMap.get('id'))
                 .subscribe(response => {
-                    console.log(response);    
+                    //console.log(response);    
                     this.users = response;
                 }) 
         }else{
             this.service.findAll()
             .subscribe(response => {
-                console.log(response);    
+                //console.log(response);    
                 this.users = response;
             }) 
         }

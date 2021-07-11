@@ -2,11 +2,12 @@
 <form>
     <div class="mb-3">
 
-        <!--
-        <label for="sender" class="form-label">Sender</label>
-        <input [(ngModel)]="sender" name="sender" type="text" class="form-control" id="sender" >
-        <div id="senderHelp" class="form-text">Fill with id wallet of Sender</div>
-        -->
+        <div *ngIf="isAlertOkey" class="alert alert-success" role="alertOkey">
+            Transfer completed!
+        </div>
+        <div *ngIf="isAlertFail" class="alert alert-danger" role="alertFail">
+            Insufficient funds.
+        </div>
 
         <form [formGroup]="registrationForm">
             <label for="sender" class="form-label">Sender</label>
@@ -25,13 +26,6 @@
         </form>
 
     </div>
-    <!--
-    <div class="mb-3">
-        <label for="receiver" class="form-label">Receiver</label>
-        <input [(ngModel)]="receiver" name="receiver" type="text" class="form-control" id="receiver" >
-        <div id="receiverHelp" class="form-text">Fill with id wallet of Receiver</div>
-    </div>
-    -->
 
     <label for="money" class="form-label">Money</label>
         <input [(ngModel)]="money" name="money" type=number min=0.00 placeholder="0.00" class="form-control" id="money">

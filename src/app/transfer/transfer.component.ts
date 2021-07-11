@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormBuilder, Validators } from "@angular/forms";
 
-
 @Component({
   selector: 'app-transfer',
   templateUrl: './transfer.component.html',
@@ -17,6 +16,9 @@ export class TransferComponent implements OnInit {
     public wallets;
     public senderId;
     public receiverId;
+
+    isAlertOkey = false;
+    isAlertFail = false;
 
     constructor(
         private service: UserService,
@@ -54,8 +56,20 @@ export class TransferComponent implements OnInit {
 
     this.service.transfer(transferMoney)
         .subscribe(response => {
-            console.log(response);
-            this.router.navigate(['/']);
+            if (response[0] == undefined){
+                this.isAlertFail = true; 
+                this.isAlertOkey = false;
+            } else {
+                this.isAlertOkey = true; 
+                this.isAlertFail = false; 
+            }
+            console.log(response.toLocaleString);
+            console.log(response[0]);
+            this.money = 0;
+            this.service.showWallets()
+                .subscribe(response => {
+                    this.wallets  = response;
+            });
         });
     }
 
